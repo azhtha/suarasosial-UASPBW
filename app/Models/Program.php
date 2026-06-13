@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Program extends Model
 {
@@ -37,6 +38,6 @@ class Program extends Model
      */
     public function getImageUrlAttribute()
     {
-        return $this->image ? asset('storage/' . $this->image) : asset('images/placeholder.jpg');
+        return $this->image ? Storage::disk('public')->url($this->image) : asset('images/placeholder.jpg');
     }
 }
