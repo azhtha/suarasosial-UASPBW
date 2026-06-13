@@ -8,28 +8,28 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div class="bg-white rounded-lg shadow p-6 border border-[var(--border-soft)]">
             <div class="flex items-center">
-                <div class="flex-shrink-0">
+                <div class="shrink-0">
                     <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[var(--lavender)] text-white">
                         <i class="fas fa-bullhorn"></i>
                     </div>
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm text-[var(--text-muted)]">Total Program</p>
-                    <p class="text-3xl font-bold text-[var(--text)]">{{ $totalPrograms }}</p>
+                    <p class="text-sm text-(--text-muted)]">Total Program</p>
+                    <p class="text-3xl font-bold text-(--text)]">{{ $totalPrograms }}</p>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow p-6 border border-[var(--border-soft)]">
+        <div class="bg-white rounded-lg shadow p-6 border border-(--border-soft)]">
             <div class="flex items-center">
-                <div class="flex-shrink-0">
+                <div class="shrink-0">
                     <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[var(--primary)] text-white">
                         <i class="fas fa-folder"></i>
                     </div>
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm text-[var(--text-muted)]">Total Kategori</p>
-                    <p class="text-3xl font-bold text-[var(--text)]">{{ $totalCategories }}</p>
+                    <p class="text-sm text-(--text-muted)]">Total Kategori</p>
+                    <p class="text-3xl font-bold text-(--text)]">{{ $totalCategories }}</p>
                 </div>
             </div>
         </div>

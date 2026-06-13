@@ -10,7 +10,7 @@
 </head>
 <body class="min-h-screen bg-linear-to-b from-[#F8F5FF] to-white text-[#2E1065]">
     <div class="min-h-screen flex items-center justify-center px-8 py-12">
-        <div class="w-full max-w-3xl bg-white border border-[#E9D5FF] rounded-[1.5rem] shadow-[0_28px_80px_rgba(124,58,237,0.12)] overflow-hidden">
+        <div class="w-full max-w-3xl bg-white border border-[#E9D5FF] rounded-3xl shadow-[0_28px_80px_rgba(124,58,237,0.12)] overflow-hidden">
             <div class="bg-[linear-gradient(135deg,rgba(124,58,237,0.15),rgba(167,139,250,0.12))] p-12 text-center">
                 <h1 class="text-[clamp(3rem,4vw,4.5rem)] tracking-[-0.06em] m-0">{{ $code ?? 'Error' }}</h1>
                 <p class="mt-4 text-[#6B7280] text-lg">{{ $title ?? 'Terjadi kesalahan' }}</p>

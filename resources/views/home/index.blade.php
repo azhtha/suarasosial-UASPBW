@@ -23,13 +23,13 @@
     <div class="bg-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-                <div class="p-6 bg-[var(--lavender)]/20 rounded-lg">
-                    <div class="text-4xl font-bold text-[var(--primary)] mb-2">{{ $totalPrograms }}</div>
-                    <div class="text-[var(--text-muted)]">Program Sosialisasi</div>
+                <div class="p-6 bg-(--lavender)]/20 rounded-lg">
+                    <div class="text-4xl font-bold text-(--primary)] mb-2">{{ $totalPrograms }}</div>
+                    <div class="text-(--text-muted)]">Program Sosialisasi</div>
                 </div>
-                <div class="p-6 bg-[var(--accent)]/20 rounded-lg">
-                    <div class="text-4xl font-bold text-[var(--text)] mb-2">{{ count($categories) }}</div>
-                    <div class="text-[var(--text-muted)]">Kategori Kegiatan</div>
+                <div class="p-6 bg-(--accent)]/20 rounded-lg">
+                    <div class="text-4xl font-bold text-(--text)] mb-2">{{ count($categories) }}</div>
+                    <div class="text-(--text-muted)]">Kategori Kegiatan</div>
                 </div>
             </div>
         </div>
@@ -37,14 +37,14 @@
 
     <!-- Latest Programs -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 class="text-4xl font-bold text-[var(--text)] mb-4">Program Terbaru</h2>
-        <p class="text-[var(--text-muted)] mb-8">Temukan informasi tentang kegiatan sosialisasi terbaru dari mahasiswa</p>
+        <h2 class="text-4xl font-bold text-(--text)] mb-4">Program Terbaru</h2>
+        <p class="text-(--text-muted)] mb-8">Temukan informasi tentang kegiatan sosialisasi terbaru dari mahasiswa</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse($latestPrograms as $program)
                 <div class="card hover:shadow-xl transition overflow-hidden">
                     <!-- Image -->
-                    <div class="w-full h-48 bg-[var(--lavender)] flex items-center justify-center overflow-hidden relative">
+                    <div class="w-full h-48 bg-(--lavender)] flex items-center justify-center overflow-hidden relative">
                         <div class="image-fallback absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4" style="display: none;">
                             <i class="fas fa-image text-6xl opacity-50"></i>
                             <p class="text-sm mt-2 opacity-75">Tidak ada gambar</p>
@@ -69,26 +69,26 @@
                         </div>
 
                         <!-- Title -->
-                        <h3 class="text-xl font-bold text-[var(--text)] mb-2 line-clamp-2">
+                        <h3 class="text-xl font-bold text-(--text)] mb-2 line-clamp-2">
                             {{ $program->title }}
                         </h3>
 
                         <!-- Meta Info -->
-                        <div class="space-y-2 text-sm text-[var(--text-muted)] mb-4">
+                        <div class="space-y-2 text-sm text-(--text-muted)] mb-4">
                             <div>
-                                <i class="fas fa-user text-[var(--primary)] mr-2"></i>{{ $program->author }}
+                                <i class="fas fa-user text-(--primary)] mr-2"></i>{{ $program->author }}
                             </div>
                             <div>
-                                <i class="fas fa-calendar text-[var(--primary)] mr-2"></i>{{ $program->publish_date->format('d M Y') }}
+                                <i class="fas fa-calendar text-(--primary)] mr-2"></i>{{ $program->publish_date->format('d M Y') }}
                             </div>
-                            <div class="flex items-center text-sm text-[var(--text-muted)]">
-                                <i class="fas fa-map-marker-alt text-[var(--primary)] mr-2 flex-shrink-0"></i>
+                            <div class="flex items-center text-sm text-(--text-muted)]">
+                                <i class="fas fa-map-marker-alt text-(--primary)] mr-2 shrink-0"></i>
                                 <span class="truncate min-w-0 block">{{ $program->location }}</span>
                             </div>
                         </div>
 
                         <!-- Description -->
-                        <p class="text-[var(--text-muted)] text-sm mb-4 line-clamp-3">
+                        <p class="text-(--text-muted)] text-sm mb-4 line-clamp-3">
                             {{ $program->description }}
                         </p>
 
@@ -100,8 +100,8 @@
                 </div>
             @empty
                 <div class="col-span-3 text-center py-12">
-                    <i class="fas fa-inbox text-6xl text-[var(--border-soft)] mb-4"></i>
-                    <p class="text-[var(--text-muted)]">Belum ada program yang tersedia</p>
+                    <i class="fas fa-inbox text-6xl text-(--border-soft)] mb-4"></i>
+                    <p class="text-(--text-muted)]">Belum ada program yang tersedia</p>
                 </div>
             @endforelse
         </div>
@@ -114,14 +114,14 @@
     </div>
 
     <!-- Categories Section -->
-    <div class="bg-[var(--background)] py-16">
+    <div class="bg-(--background)] py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-[var(--text)] mb-8 text-center">Kategori Kegiatan</h2>
+            <h2 class="text-4xl font-bold text-(--text)] mb-8 text-center">Kategori Kegiatan</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                 @foreach($categories as $category)
                     <a href="{{ route('programs.index', ['category' => $category->slug]) }}" class="card p-6 text-center hover:shadow-lg transition">
-                        <div class="text-4xl text-[var(--primary)] mb-3">
+                        <div class="text-4xl text-(--primary)] mb-3">
                             @switch($category->slug)
                                 @case('pendidikan')
                                     <i class="fas fa-graduation-cap"></i>
@@ -142,8 +142,8 @@
                                     <i class="fas fa-tag"></i>
                             @endswitch
                         </div>
-                        <h3 class="font-bold text-[var(--text)]">{{ $category->name }}</h3>
-                        <p class="text-sm text-[var(--text-muted)] mt-2">{{ $category->programs->count() }} Program</p>
+                        <h3 class="font-bold text-(--text)]">{{ $category->name }}</h3>
+                        <p class="text-sm text-(--text-muted)] mt-2">{{ $category->programs->count() }} Program</p>
                     </a>
                 @endforeach
             </div>
