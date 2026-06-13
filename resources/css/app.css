@@ -1,9 +1,43 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+@layer base {
+    html, body {
+        font-family: Instrument Sans, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', Arial;
+    }
 }
+
+@layer components {
+    .btn-primary {
+        @apply bg-primary text-white font-semibold px-4 py-2 rounded-lg inline-flex items-center justify-center;
+    }
+    .btn-primary:hover { @apply bg-primary-dark }
+
+    .btn-secondary {
+        @apply bg-transparent text-primary border border-primary font-semibold px-4 py-2 rounded-lg inline-flex items-center justify-center;
+    }
+    .btn-secondary:hover { @apply bg-primary/10 text-primary-dark }
+
+    .btn-accent {
+        @apply bg-accent text-text font-semibold px-4 py-2 rounded-lg inline-flex items-center justify-center;
+    }
+    .btn-accent:hover { @apply bg-yellow-500 }
+
+    .btn-loading { @apply opacity-75 pointer-events-none }
+
+    .card { @apply bg-card border border-border-soft rounded-xl shadow-lg overflow-hidden }
+
+    .badge { @apply inline-block px-3 py-1 text-xs font-bold rounded-full }
+    .badge-primary { @apply bg-[#EDE9FE] text-primary }
+
+    .input-soft { @apply border border-border-soft bg-white text-text px-4 py-2 rounded-xl w-full focus:outline-none }
+    .input-soft:focus { box-shadow: 0 0 0 12px rgba(167,139,250,0.12); }
+
+    .skeleton { @apply relative overflow-hidden bg-gray-100 }
+    .skeleton::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent); transform: translateX(-100%); animation: shimmer 1.5s infinite; }
+
+    .spinner { @apply inline-block w-5 h-5 border-4 border-white/60 rounded-full animate-spin }
+}
+
+@keyframes shimmer { to { transform: translateX(100%); } }
