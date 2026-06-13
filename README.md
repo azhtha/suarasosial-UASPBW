@@ -18,4 +18,6 @@ AWS_URL=https://<project-ref>.supabase.co/storage/v1/object/public/suarasosial-b
 
 Do not use the Supabase anon key or service-role JWT as S3 credentials. After
 changing Railway variables, redeploy the application so Laravel reloads its
-configuration.
+configuration. The application also upgrades the legacy
+`https://<project-ref>.supabase.co/storage/v1/s3` endpoint to Supabase's direct
+storage hostname for backward compatibility.

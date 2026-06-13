@@ -10,6 +10,7 @@ use App\Services\ProgramService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use League\Flysystem\FilesystemException;
 
 class ProgramController extends Controller
 {
@@ -59,7 +60,16 @@ class ProgramController extends Controller
         $data = $request->validated();
         $image = $request->file('image');
 
-        $this->programService->storeProgram($data, $image);
+        try {
+            $this->programService->storeProgram($data, $image);
+        } catch (FilesystemException $exception) {
+            report($exception);
+
+            return back()->withInput()->with(
+                'error',
+                'Gambar gagal diunggah karena penyimpanan sedang tidak dapat diakses. Program belum disimpan. Silakan coba lagi.'
+            );
+        }
 
         return redirect()->route('admin.programs.index')
             ->with('success', 'Program berhasil ditambahkan.');
@@ -83,7 +93,16 @@ class ProgramController extends Controller
         $data = $request->validated();
         $image = $request->file('image');
 
-        $this->programService->updateProgram($program, $data, $image);
+        try {
+            $this->programService->updateProgram($program, $data, $image);
+        } catch (FilesystemException $exception) {
+            report($exception);
+
+            return back()->withInput()->with(
+                'error',
+                'Gambar gagal diunggah karena penyimpanan sedang tidak dapat diakses. Perubahan belum disimpan dan gambar lama tetap digunakan. Silakan coba lagi.'
+            );
+        }
 
         return redirect()->route('admin.programs.index')
             ->with('success', 'Program berhasil diperbarui.');
@@ -94,7 +113,16 @@ class ProgramController extends Controller
      */
     public function destroy(Program $program): RedirectResponse
     {
-        $this->programService->deleteProgramImage($program);
+        try {
+            $this->programService->deleteProgramImage($program);
+        } catch (FilesystemException $exception) {
+            report($exception);
+
+            return back()->with(
+                'error',
+                'Program belum dihapus karena penyimpanan gambar sedang tidak dapat diakses. Silakan coba lagi.'
+            );
+        }
 
         $program->delete();
 
