@@ -77,8 +77,9 @@
                             <div>
                                 <i class="fas fa-calendar text-[var(--primary)] mr-2"></i>{{ $program->publish_date->format('d M Y') }}
                             </div>
-                            <div>
-                                <i class="fas fa-map-marker-alt text-[var(--primary)] mr-2"></i>{{ $program->location }}
+                            <div class="flex items-center text-sm text-[var(--text-muted)]">
+                                <i class="fas fa-map-marker-alt text-[var(--primary)] mr-2 flex-shrink-0"></i>
+                                <span class="truncate min-w-0 block">{{ $program->location }}</span>
                             </div>
                         </div>
 
