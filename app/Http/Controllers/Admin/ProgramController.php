@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Program;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProgramController extends Controller
@@ -91,8 +92,8 @@ class ProgramController extends Controller
      */
     public function destroy(Program $program): RedirectResponse
     {
-        if ($program->image && \Storage::disk('s3')->exists($program->image)) {
-            \Storage::disk('s3')->delete($program->image);
+        if ($program->image && Storage::disk('s3')->exists($program->image)) {
+            Storage::disk('s3')->delete($program->image);
         }
 
         $program->delete();

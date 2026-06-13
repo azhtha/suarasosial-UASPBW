@@ -16,7 +16,7 @@ class CategoryService
 
     public function updateCategory(Category $category, array $data): Category
     {
-        $data['slug'] = \Str::slug($data['name']);
+        $data['slug'] = Str::slug($data['name']);
 
         $category->update($data);
 
