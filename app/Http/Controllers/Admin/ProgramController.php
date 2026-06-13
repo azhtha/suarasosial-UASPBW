@@ -92,8 +92,8 @@ class ProgramController extends Controller
      */
     public function destroy(Program $program): RedirectResponse
     {
-        if ($program->image && Storage::disk('s3')->exists($program->image)) {
-            Storage::disk('s3')->delete($program->image);
+        if ($program->image && \Storage::disk('public')->exists($program->image)) {
+            \Storage::disk('public')->delete($program->image);
         }
 
         $program->delete();

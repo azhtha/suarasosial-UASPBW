@@ -47,8 +47,8 @@ class Program extends Model
             return $this->image;
         }
 
-        if (Storage::disk('s3')->exists($this->image)) {
-            return Storage::disk('s3')->url($this->image);
+        if (Storage::disk('public')->exists($this->image)) {
+            return Storage::disk('public')->url($this->image);
         }
 
         return null;

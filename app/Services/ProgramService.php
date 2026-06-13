@@ -13,7 +13,7 @@ class ProgramService
     {
         if ($image) {
             $filename = time().'_'.Str::random(8).'.'.$image->getClientOriginalExtension();
-            $path = Storage::disk('s3')->putFileAs('programs', $image, $filename);
+            $path = Storage::disk('public')->putFileAs('programs', $image, $filename);
             $data['image'] = $path;
         }
 
@@ -25,12 +25,12 @@ class ProgramService
     public function updateProgram(Program $program, array $data, ?UploadedFile $image = null): Program
     {
         if ($image) {
-            if ($program->image && Storage::disk('s3')->exists($program->image)) {
-                Storage::disk('s3')->delete($program->image);
+            if ($program->image && Storage::disk('public')->exists($program->image)) {
+                Storage::disk('public')->delete($program->image);
             }
 
             $filename = time().'_'.Str::random(8).'.'.$image->getClientOriginalExtension();
-            $path = Storage::disk('s3')->putFileAs('programs', $image, $filename);
+            $path = Storage::disk('public')->putFileAs('programs', $image, $filename);
             $data['image'] = $path;
         }
 
