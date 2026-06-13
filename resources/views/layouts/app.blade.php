@@ -259,10 +259,7 @@
                         <a href="{{ route('programs.index') }}" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Program</a>
                         @auth
                             <a href="{{ route('admin.dashboard') }}" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Admin</a>
-                            <form method="POST" action="{{ route('admin.logout') }}" class="inline">
-                                @csrf
-                                <button type="submit" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Logout</button>
-                            </form>
+                            <a href="{{ route('home') }}" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Beranda</a>
                         @else
                             <a href="{{ route('login') }}" class="btn-accent text-sm">Login Admin</a>
                         @endauth

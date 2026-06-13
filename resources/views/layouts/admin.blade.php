@@ -176,12 +176,9 @@
                         <p class="text-sm font-semibold">{{ Auth::user()->name }}</p>
                         <p class="text-xs text-[rgba(255,255,255,0.85)]">{{ Auth::user()->email }}</p>
                     </div>
-                    <form method="POST" action="{{ route('admin.logout') }}">
-                        @csrf
-                        <button type="submit" class="text-[rgba(255,255,255,0.85)] hover:text-white" title="Logout">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </button>
-                    </form>
+                    <a href="{{ route('home') }}" class="text-[rgba(255,255,255,0.85)] hover:text-white" title="Kembali ke Beranda">
+                        <i class="fas fa-home"></i>
+                    </a>
                 </div>
             </div>
         </div>
