@@ -13,14 +13,14 @@
             <div class="lg:col-span-2 space-y-6">
                 <!-- Card: Basic Info -->
                 <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-bold text-[var(--text)] mb-4">
-                        <i class="fas fa-file-alt text-[var(--primary)] mr-2"></i>Informasi Dasar
+                    <h3 class="text-lg font-bold text-(--text) mb-4">
+                        <i class="fas fa-file-alt text-(--primary) mr-2"></i>Informasi Dasar
                     </h3>
 
                     <!-- Title -->
                     <div class="mb-6">
-                        <label for="title" class="block text-sm font-semibold text-[var(--text)] mb-2">
-                            <i class="fas fa-heading text-[var(--primary)] mr-1"></i>Judul Program
+                        <label for="title" class="block text-sm font-semibold text-(--text) mb-2">
+                            <i class="fas fa-heading text-(--primary) mr-1"></i>Judul Program
                         </label>
                         <input 
                             type="text" 
@@ -29,7 +29,7 @@
                             value="{{ old('title', $program->title) }}"
                             required
                             placeholder="Masukkan judul program..."
-                            class="w-full px-4 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30 @error('title') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border border-(--border-soft) rounded-xl focus:outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--lavender)/30 @error('title') border-red-500 @enderror"
                         >
                         @error('title')
                             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -38,8 +38,8 @@
 
                     <!-- Description -->
                     <div>
-                        <label for="description" class="block text-sm font-semibold text-[var(--text)] mb-2">
-                            <i class="fas fa-align-left text-[var(--primary)] mr-1"></i>Deskripsi Program
+                        <label for="description" class="block text-sm font-semibold text-(--text) mb-2">
+                            <i class="fas fa-align-left text-(--primary) mr-1"></i>Deskripsi Program
                         </label>
                         <textarea 
                             id="description"
@@ -47,7 +47,7 @@
                             rows="8"
                             required
                             placeholder="Masukkan deskripsi lengkap program..."
-                            class="w-full px-4 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30 @error('description') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border border-(--border-soft) rounded-xl focus:outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--lavender)/30 @error('description') border-red-500 @enderror"
                         >{{ old('description', $program->description) }}</textarea>
                         @error('description')
                             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -57,20 +57,20 @@
 
                 <!-- Card: Additional Info -->
                 <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-bold text-[var(--text)] mb-4">
-                        <i class="fas fa-info-circle text-[var(--primary)] mr-2"></i>Detail Program
+                    <h3 class="text-lg font-bold text-(--text) mb-4">
+                        <i class="fas fa-info-circle text-(--primary) mr-2"></i>Detail Program
                     </h3>
 
                     <!-- Category -->
                     <div class="mb-6">
-                        <label for="category_id" class="block text-sm font-semibold text-[var(--text)] mb-2">
-                            <i class="fas fa-folder text-[var(--primary)] mr-1"></i>Kategori
+                        <label for="category_id" class="block text-sm font-semibold text-(--text) mb-2">
+                            <i class="fas fa-folder text-(--primary) mr-1"></i>Kategori
                         </label>
                         <select 
                             id="category_id"
                             name="category_id" 
                             required
-                            class="w-full px-4 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30 @error('category_id') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border border-(--border-soft) rounded-xl focus:outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--lavender)/30 @error('category_id') border-red-500 @enderror"
                         >
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}" {{ old('category_id', $program->category_id) == $category->id ? 'selected' : '' }}>
@@ -85,8 +85,8 @@
 
                     <!-- Author -->
                     <div class="mb-6">
-                        <label for="author" class="block text-sm font-semibold text-[var(--text)] mb-2">
-                            <i class="fas fa-user text-[var(--primary)] mr-1"></i>Penulis/Organisasi
+                        <label for="author" class="block text-sm font-semibold text-(--text) mb-2">
+                            <i class="fas fa-user text-(--primary) mr-1"></i>Penulis/Organisasi
                         </label>
                         <input 
                             type="text" 
@@ -95,7 +95,7 @@
                             value="{{ old('author', $program->author) }}"
                             required
                             placeholder="Nama penulis atau organisasi..."
-                            class="w-full px-4 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30 @error('author') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border border-(--border-soft) rounded-xl focus:outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--lavender)/30 @error('author') border-red-500 @enderror"
                         >
                         @error('author')
                             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -104,8 +104,8 @@
 
                     <!-- Location -->
                     <div>
-                        <label for="location" class="block text-sm font-semibold text-[var(--text)] mb-2">
-                            <i class="fas fa-map-marker-alt text-[var(--primary)] mr-1"></i>Lokasi
+                        <label for="location" class="block text-sm font-semibold text-(--text) mb-2">
+                            <i class="fas fa-map-marker-alt text-(--primary) mr-1"></i>Lokasi
                         </label>
                         <input 
                             type="text" 
@@ -114,7 +114,7 @@
                             value="{{ old('location', $program->location) }}"
                             required
                             placeholder="Lokasi kegiatan..."
-                            class="w-full px-4 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30 @error('location') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border border-(--border-soft) rounded-xl focus:outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--lavender)/30 @error('location') border-red-500 @enderror"
                         >
                         @error('location')
                             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -126,25 +126,25 @@
             <!-- Sidebar -->
             <div class="space-y-6">
                 <!-- Card: Image Upload -->
-                <div class="bg-white rounded-lg shadow p-6 border border-[var(--border-soft)]">
-                    <h3 class="text-lg font-bold text-[var(--text)] mb-4">
-                        <i class="fas fa-image text-[var(--primary)] mr-2"></i>Gambar Program
+                <div class="bg-white rounded-lg shadow p-6 border border-(--border-soft)">
+                    <h3 class="text-lg font-bold text-(--text) mb-4">
+                        <i class="fas fa-image text-(--primary) mr-2"></i>Gambar Program
                     </h3>
 
                     <div class="mb-4">
                         @if($program->image_url)
-                            <div id="imagePreview" class="w-full h-40 bg-[var(--background)] rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
-                                <div id="previewFallback" class="absolute inset-0 flex items-center justify-center text-[var(--text-muted)]" style="display: none;">
+                            <div id="imagePreview" class="w-full h-40 bg-(--background) rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
+                                <div id="previewFallback" class="absolute inset-0 flex items-center justify-center text-(--text-muted)" style="display: none;">
                                     <i class="fas fa-image text-4xl"></i>
                                 </div>
                                 <img id="previewImage" src="{{ $program->image_url }}" alt="Preview" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('previewFallback').style.display='flex';">
                             </div>
                         @else
-                            <div id="imagePreview" class="w-full h-40 bg-[var(--background)] rounded-xl mb-4 flex items-center justify-center overflow-hidden" style="display: none;">
+                            <div id="imagePreview" class="w-full h-40 bg-(--background) rounded-xl mb-4 flex items-center justify-center overflow-hidden" style="display: none;">
                                 <img id="previewImage" src="" alt="Preview" class="w-full h-full object-cover">
                             </div>
                         @endif
-                        <div id="noImagePlaceholder" class="w-full h-40 bg-[var(--background)] rounded-xl mb-4 flex flex-col items-center justify-center text-[var(--text-muted)]" style="{{ $program->image ? 'display: none;' : '' }}">
+                        <div id="noImagePlaceholder" class="w-full h-40 bg-(--background) rounded-xl mb-4 flex flex-col items-center justify-center text-(--text-muted)" style="{{ $program->image ? 'display: none;' : '' }}">
                             <i class="fas fa-image text-4xl mb-2"></i>
                             <p class="text-sm">Pilih Gambar</p>
                         </div>
@@ -163,7 +163,7 @@
                         accept="image/*"
                         class="sr-only"
                     >
-                    <p class="text-xs text-[var(--text-muted)] mt-2">
+                    <p class="text-xs text-(--text-muted) mt-2">
                         <i class="fas fa-info-circle mr-1"></i>Biarkan kosong untuk tidak mengubah gambar
                     </p>
                     @error('image')
@@ -173,8 +173,8 @@
 
                 <!-- Card: Publish Date -->
                 <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-bold text-[var(--text)] mb-4">
-                        <i class="fas fa-calendar text-[var(--primary)] mr-2"></i>Tanggal Publikasi
+                    <h3 class="text-lg font-bold text-(--text) mb-4">
+                        <i class="fas fa-calendar text-(--primary) mr-2"></i>Tanggal Publikasi
                     </h3>
 
                     <input 
@@ -183,7 +183,7 @@
                         name="publish_date" 
                         value="{{ old('publish_date', $program->publish_date->format('Y-m-d')) }}"
                         required
-                        class="w-full px-4 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30 @error('publish_date') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-(--border-soft) rounded-xl focus:outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--lavender)/30 @error('publish_date') border-red-500 @enderror"
                     >
                     @error('publish_date')
                         <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -192,8 +192,8 @@
 
                 <!-- Card: Actions -->
                 <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-bold text-[var(--text)] mb-4">
-                        <i class="fas fa-check text-[var(--primary)] mr-2"></i>Aksi
+                    <h3 class="text-lg font-bold text-(--text) mb-4">
+                        <i class="fas fa-check text-(--primary) mr-2"></i>Aksi
                     </h3>
 
                     <div class="space-y-3">

@@ -245,20 +245,20 @@
     </style>
     @yield('styles')
 </head>
-<body class="bg-[var(--background)]">
+<body class="bg-(--background)">
     <!-- Navigation -->
     @if(strpos(Route::currentRouteName(), 'admin') === false && Route::currentRouteName() !== 'login')
-        <nav class="bg-white/95 backdrop-blur-sm text-[var(--text)] shadow-sm border-b border-[var(--border-soft)] sticky top-0 z-50">
+        <nav class="bg-white/95 backdrop-blur-sm text-(--text) shadow-sm border-b border-(--border-soft) sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-wrap items-center justify-between gap-4 h-20">
-                    <a href="{{ route('home') }}" class="text-2xl font-extrabold tracking-tight flex items-center text-[var(--primary)]">
+                    <a href="{{ route('home') }}" class="text-2xl font-extrabold tracking-tight flex items-center text-(--primary)">
                         <i class="fas fa-bullhorn mr-2"></i>SuaraSosial
                     </a>
                     <div class="flex flex-wrap items-center gap-4 text-sm">
-                        <a href="{{ route('home') }}" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Beranda</a>
-                        <a href="{{ route('programs.index') }}" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Program</a>
+                        <a href="{{ route('home') }}" class="text-(--text-muted) hover:text-(--primary) transition">Beranda</a>
+                        <a href="{{ route('programs.index') }}" class="text-(--text-muted) hover:text-(--primary) transition">Program</a>
                         @auth
-                            <a href="{{ route('admin.dashboard') }}" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Admin</a>
+                            <a href="{{ route('admin.dashboard') }}" class="text-(--text-muted) hover:text-(--primary) transition">Admin</a>
                         @endauth
                     </div>
                 </div>
@@ -283,29 +283,29 @@
 
     <!-- Footer -->
     @if(strpos(Route::currentRouteName(), 'admin') === false && Route::currentRouteName() !== 'login')
-        <footer class="bg-[var(--background)] text-[var(--text-muted)] py-8 mt-12 border-t border-[var(--border-soft)]">
+        <footer class="bg-(--background) text-(--text-muted) py-8 mt-12 border-t border-(--border-soft)">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     <div>
-                        <h3 class="text-[var(--text)] font-bold text-lg mb-4">SuaraSosial</h3>
+                        <h3 class="text-(--text) font-bold text-lg mb-4">SuaraSosial</h3>
                         <p class="text-sm">Platform informasi kegiatan sosialisasi mahasiswa kepada masyarakat.</p>
                     </div>
                     <div>
-                        <h3 class="text-[var(--text)] font-bold text-lg mb-4">Kategori</h3>
+                        <h3 class="text-(--text) font-bold text-lg mb-4">Kategori</h3>
                         <ul class="text-sm space-y-2">
-                            <li><a href="{{ route('programs.index', ['category' => 'pendidikan']) }}" class="hover:text-[var(--primary)] transition">Pendidikan</a></li>
-                            <li><a href="{{ route('programs.index', ['category' => 'lingkungan']) }}" class="hover:text-[var(--primary)] transition">Lingkungan</a></li>
-                            <li><a href="{{ route('programs.index', ['category' => 'literasi-digital']) }}" class="hover:text-[var(--primary)] transition">Literasi Digital</a></li>
-                            <li><a href="{{ route('programs.index', ['category' => 'kesehatan']) }}" class="hover:text-[var(--primary)] transition">Kesehatan</a></li>
+                            <li><a href="{{ route('programs.index', ['category' => 'pendidikan']) }}" class="hover:text-(--primary) transition">Pendidikan</a></li>
+                            <li><a href="{{ route('programs.index', ['category' => 'lingkungan']) }}" class="hover:text-(--primary) transition">Lingkungan</a></li>
+                            <li><a href="{{ route('programs.index', ['category' => 'literasi-digital']) }}" class="hover:text-(--primary) transition">Literasi Digital</a></li>
+                            <li><a href="{{ route('programs.index', ['category' => 'kesehatan']) }}" class="hover:text-(--primary) transition">Kesehatan</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-[var(--text)] font-bold text-lg mb-4">Kontak</h3>
+                        <h3 class="text-(--text) font-bold text-lg mb-4">Kontak</h3>
                         <p class="text-sm">Email: info@suarasosial.test</p>
                         <p class="text-sm">Telepon: (021) 1234-5678</p>
                     </div>
                 </div>
-                <div class="border-t border-[var(--border-soft)] pt-8">
+                <div class="border-t border-(--border-soft) pt-8">
                     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                         @guest
                             <a href="{{ route('login') }}" class="btn-accent text-sm inline-flex items-center justify-center px-4 py-3 rounded-3xl">

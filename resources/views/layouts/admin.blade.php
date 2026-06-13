@@ -145,9 +145,9 @@
 </head>
 <body>
     <!-- Admin Sidebar + Header -->
-    <div class="flex h-screen bg-[var(--background)]">
+    <div class="flex h-screen bg-(--background)">
         <!-- Sidebar -->
-        <div class="w-64 bg-[var(--primary)] text-white shadow-lg flex flex-col">
+        <div class="w-64 bg-(--primary) text-white shadow-lg flex flex-col">
             <div class="p-6">
                 <h1 class="text-2xl font-bold flex items-center">
                     <i class="fas fa-user-shield mr-2"></i>Admin
@@ -156,16 +156,16 @@
             </div>
             
             <nav class="mt-6 px-2 space-y-1">
-                <a href="{{ route('admin.dashboard') }}" class="group flex items-center px-5 py-3 rounded-r-3xl text-sm font-medium transition {{ request()->routeIs('admin.dashboard') ? 'bg-[var(--primary-dark)] border-l-4 border-[var(--accent)] text-white' : 'text-white hover:bg-[var(--lavender)]/20' }}">
+                <a href="{{ route('admin.dashboard') }}" class="group flex items-center px-5 py-3 rounded-r-3xl text-sm font-medium transition {{ request()->routeIs('admin.dashboard') ? 'bg-(--primary-dark) border-l-4 border-(--accent) text-white' : 'text-white hover:bg-(--lavender)/20' }}">
                     <i class="fas fa-chart-line mr-3"></i>Dashboard
                 </a>
-                <a href="{{ route('admin.programs.index') }}" class="group flex items-center px-5 py-3 rounded-r-3xl text-sm font-medium transition {{ request()->routeIs('admin.programs.*') ? 'bg-[var(--primary-dark)] border-l-4 border-[var(--accent)] text-white' : 'text-white hover:bg-[var(--lavender)]/20' }}">
+                <a href="{{ route('admin.programs.index') }}" class="group flex items-center px-5 py-3 rounded-r-3xl text-sm font-medium transition {{ request()->routeIs('admin.programs.*') ? 'bg-(--primary-dark) border-l-4 border-(--accent) text-white' : 'text-white hover:bg-(--lavender)/20' }}">
                     <i class="fas fa-bullhorn mr-3"></i>Program
                 </a>
-                <a href="{{ route('admin.categories.index') }}" class="group flex items-center px-5 py-3 rounded-r-3xl text-sm font-medium transition {{ request()->routeIs('admin.categories.*') ? 'bg-[var(--primary-dark)] border-l-4 border-[var(--accent)] text-white' : 'text-white hover:bg-[var(--lavender)]/20' }}">
+                <a href="{{ route('admin.categories.index') }}" class="group flex items-center px-5 py-3 rounded-r-3xl text-sm font-medium transition {{ request()->routeIs('admin.categories.*') ? 'bg-(--primary-dark) border-l-4 border-(--accent) text-white' : 'text-white hover:bg-(--lavender)/20' }}">
                     <i class="fas fa-folder mr-3"></i>Kategori
                 </a>
-                <a href="{{ route('admin.account.edit') }}" class="group flex items-center px-5 py-3 rounded-r-3xl text-sm font-medium transition {{ request()->routeIs('admin.account.*') ? 'bg-[var(--primary-dark)] border-l-4 border-[var(--accent)] text-white' : 'text-white hover:bg-[var(--lavender)]/20' }}">
+                <a href="{{ route('admin.account.edit') }}" class="group flex items-center px-5 py-3 rounded-r-3xl text-sm font-medium transition {{ request()->routeIs('admin.account.*') ? 'bg-(--primary-dark) border-l-4 border-(--accent) text-white' : 'text-white hover:bg-(--lavender)/20' }}">
                     <i class="fas fa-user-cog mr-3"></i>Akun
                 </a>
             </nav>
@@ -194,9 +194,9 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col">
             <!-- Top Bar -->
-            <div class="bg-white shadow-sm px-6 py-4 flex justify-between items-center border-b border-[var(--border-soft)]">
-                <h2 class="text-xl font-semibold text-[var(--text)]">@yield('page-title')</h2>
-                <a href="{{ route('home') }}" class="text-[var(--primary)] hover:text-[var(--primary-dark)] flex items-center">
+            <div class="bg-white shadow-sm px-6 py-4 flex justify-between items-center border-b border-(--border-soft)">
+                <h2 class="text-xl font-semibold text-(--text)">@yield('page-title')</h2>
+                <a href="{{ route('home') }}" class="text-(--primary) hover:text-(--primary-dark) flex items-center">
                     <i class="fas fa-external-link-alt mr-2"></i>Lihat Website
                 </a>
             </div>

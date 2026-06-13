@@ -7,7 +7,7 @@
     <!-- Header with Button -->
     <div class="flex justify-between items-center mb-6">
         <div>
-            <p class="text-[var(--text-muted)]">Total kategori: {{ count($categories) }}</p>
+            <p class="text-(--text-muted)">Total kategori: {{ count($categories) }}</p>
         </div>
         <a href="{{ route('admin.categories.create') }}" class="btn-primary">
             <i class="fas fa-plus mr-2"></i>Tambah Kategori
@@ -15,29 +15,29 @@
     </div>
 
     <!-- Categories Table -->
-    <div class="bg-white rounded-lg shadow overflow-hidden border border-[var(--border-soft)]">
+    <div class="bg-white rounded-lg shadow overflow-hidden border border-(--border-soft)">
         @if($categories->count() > 0)
             <div class="overflow-x-auto">
                 <table class="w-full">
-                    <thead class="bg-[var(--lavender)]/30 border-b border-[var(--border-soft)]">
+                    <thead class="bg-(--lavender)/30 border-b border-(--border-soft)">
                         <tr>
-                            <th class="px-6 py-3 text-left text-sm font-semibold text-[var(--text-muted)]">Nama Kategori</th>
-                            <th class="px-6 py-3 text-left text-sm font-semibold text-[var(--text-muted)]">Slug</th>
-                            <th class="px-6 py-3 text-left text-sm font-semibold text-[var(--text-muted)]">Jumlah Program</th>
-                            <th class="px-6 py-3 text-center text-sm font-semibold text-[var(--text-muted)]">Aksi</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-(--text-muted)">Nama Kategori</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-(--text-muted)">Slug</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-(--text-muted)">Jumlah Program</th>
+                            <th class="px-6 py-3 text-center text-sm font-semibold text-(--text-muted)">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-[var(--border-soft)]">
+                    <tbody class="divide-y divide-(--border-soft)">
                         @foreach($categories as $category)
                             <tr class="row-hover-lavender">
                                 <td class="px-6 py-4">
-                                    <div class="font-semibold text-[var(--text)]">{{ $category->name }}</div>
+                                    <div class="font-semibold text-(--text)">{{ $category->name }}</div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <code class="text-sm text-[var(--text-muted)] bg-[var(--background)]/70 px-2 py-1 rounded">{{ $category->slug }}</code>
+                                    <code class="text-sm text-(--text-muted) bg-(--background)/70 px-2 py-1 rounded">{{ $category->slug }}</code>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <span class="px-3 py-1 bg-[var(--lavender)]/25 text-[var(--primary)] text-sm rounded-full">
+                                    <span class="px-3 py-1 bg-(--lavender)/25 text-(--primary) text-sm rounded-full">
                                         {{ $category->programs_count }} Program
                                     </span>
                                 </td>
@@ -68,8 +68,8 @@
             </div>
         @else
             <div class="p-12 text-center">
-                <i class="fas fa-folder text-4xl text-[var(--border-soft)] mb-3"></i>
-                <p class="text-[var(--text-muted)] mb-4">Belum ada kategori</p>
+                <i class="fas fa-folder text-4xl text-(--border-soft) mb-3"></i>
+                <p class="text-(--text-muted) mb-4">Belum ada kategori</p>
                 <a href="{{ route('admin.categories.create') }}" class="btn-primary inline-block">
                     <i class="fas fa-plus mr-2"></i>Buat Kategori Pertama
                 </a>

@@ -6,10 +6,10 @@
 @section('content')
     <!-- Statistics Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white rounded-lg shadow p-6 border border-[var(--border-soft)]">
+        <div class="bg-white rounded-lg shadow p-6 border border-(--border-soft)">
             <div class="flex items-center">
                 <div class="shrink-0">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[var(--lavender)] text-white">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-(--lavender) text-white">
                         <i class="fas fa-bullhorn"></i>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
         <div class="bg-white rounded-lg shadow p-6 border border-(--border-soft)]">
             <div class="flex items-center">
                 <div class="shrink-0">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[var(--primary)] text-white">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-(--primary) text-white">
                         <i class="fas fa-folder"></i>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
 
     <!-- Quick Actions -->
     <div class="bg-white rounded-lg shadow p-6 mb-8">
-        <h3 class="text-lg font-bold text-[var(--text)] mb-4">
+        <h3 class="text-lg font-bold text-(--text) mb-4">
             <i class="fas fa-flash text-yellow-500 mr-2"></i>Aksi Cepat
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -54,40 +54,40 @@
     </div>
 
     <!-- Latest Programs -->
-    <div class="bg-white rounded-lg shadow overflow-hidden border border-[var(--border-soft)]">
-        <div class="px-6 py-4 border-b border-[var(--border-soft)]">
-            <h3 class="text-lg font-bold text-[var(--text)]">
-                <i class="fas fa-history text-[var(--primary)] mr-2"></i>Program Terbaru
+    <div class="bg-white rounded-lg shadow overflow-hidden border border-(--border-soft)">
+        <div class="px-6 py-4 border-b border-(--border-soft)">
+            <h3 class="text-lg font-bold text-(--text)">
+                <i class="fas fa-history text-(--primary) mr-2"></i>Program Terbaru
             </h3>
         </div>
         
         @if($latestPrograms->count() > 0)
             <div class="overflow-x-auto">
                 <table class="min-w-full table-auto border-collapse">
-                    <thead class="bg-[var(--lavender)]/30 border-b border-[var(--border-soft)]">
+                    <thead class="bg-(--lavender)/30 border-b border-(--border-soft)">
                         <tr>
-                            <th class="w-[35%] px-4 py-3 text-left text-sm font-semibold text-[var(--text-muted)]">Judul</th>
-                            <th class="w-[15%] px-4 py-3 text-left text-sm font-semibold text-[var(--text-muted)]">Kategori</th>
-                            <th class="w-[17%] px-4 py-3 text-left text-sm font-semibold text-[var(--text-muted)]">Penulis</th>
-                            <th class="w-[18%] px-4 py-3 text-left text-sm font-semibold text-[var(--text-muted)]">Tanggal</th>
-                            <th class="w-[15%] px-4 py-3 text-center text-sm font-semibold text-[var(--text-muted)]">Aksi</th>
+                            <th class="w-[35%] px-4 py-3 text-left text-sm font-semibold text-(--text-muted)">Judul</th>
+                            <th class="w-[15%] px-4 py-3 text-left text-sm font-semibold text-(--text-muted)">Kategori</th>
+                            <th class="w-[17%] px-4 py-3 text-left text-sm font-semibold text-(--text-muted)">Penulis</th>
+                            <th class="w-[18%] px-4 py-3 text-left text-sm font-semibold text-(--text-muted)">Tanggal</th>
+                            <th class="w-[15%] px-4 py-3 text-center text-sm font-semibold text-(--text-muted)">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-[var(--border-soft)]">
+                    <tbody class="divide-y divide-(--border-soft)">
                         @foreach($latestPrograms as $program)
                             <tr class="row-hover-lavender">
                                 <td class="px-4 py-4">
-                                    <div class="text-sm font-semibold text-[var(--text)]">{{ Str::limit($program->title, 40) }}</div>
+                                    <div class="text-sm font-semibold text-(--text)">{{ Str::limit($program->title, 40) }}</div>
                                 </td>
                                 <td class="px-4 py-4">
-                                    <span class="inline-flex items-center px-3 py-1 bg-[var(--lavender)]/25 text-[var(--primary)] text-sm rounded-full">
+                                    <span class="inline-flex items-center px-3 py-1 bg-(--lavender)/25 text-(--primary) text-sm rounded-full">
                                         {{ $program->category->name }}
                                     </span>
                                 </td>
-                                <td class="px-4 py-4 text-sm text-[var(--text-muted)] whitespace-nowrap">
+                                <td class="px-4 py-4 text-sm text-(--text-muted) whitespace-nowrap">
                                     {{ $program->author }}
                                 </td>
-                                <td class="px-4 py-4 text-sm text-[var(--text-muted)] whitespace-nowrap">
+                                <td class="px-4 py-4 text-sm text-(--text-muted) whitespace-nowrap">
                                     {{ $program->publish_date->format('d M Y') }}
                                 </td>
                                 <td class="px-4 py-4 text-sm text-center">
@@ -107,8 +107,8 @@
             </div>
         @else
             <div class="p-6 text-center">
-                <i class="fas fa-inbox text-4xl text-[var(--border-soft)] mb-3"></i>
-                <p class="text-[var(--text-muted)]">Belum ada program</p>
+                <i class="fas fa-inbox text-4xl text-(--border-soft) mb-3"></i>
+                <p class="text-(--text-muted)">Belum ada program</p>
                 <a href="{{ route('admin.programs.create') }}" class="btn-primary inline-block mt-4">
                     <i class="fas fa-plus mr-2"></i>Buat Program Pertama
                 </a>

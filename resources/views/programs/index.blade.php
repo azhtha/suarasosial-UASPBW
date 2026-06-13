@@ -18,29 +18,29 @@
             <!-- Sidebar Filters -->
             <div class="lg:col-span-1">
                 <div class="card p-6 sticky top-20">
-                    <h3 class="text-lg font-bold text-[var(--text)] mb-4">
+                    <h3 class="text-lg font-bold text-(--text) mb-4">
                         <i class="fas fa-filter mr-2"></i>Filter
                     </h3>
 
                     <!-- Search Box -->
                     <form method="GET" action="{{ route('programs.index') }}" class="mb-6">
                         <div class="mb-4">
-                            <label class="block text-sm font-semibold text-[var(--text)] mb-2">Cari Program</label>
+                            <label class="block text-sm font-semibold text-(--text) mb-2">Cari Program</label>
                             <input 
                                 type="text" 
                                 name="search" 
                                 value="{{ request('search') }}"
                                 placeholder="Cari judul, author, lokasi..." 
-                                class="w-full px-3 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30"
+                                class="w-full px-3 py-2 border border-(--border-soft) rounded-xl focus:outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--lavender)/30"
                             >
                         </div>
 
                         <!-- Category Filter -->
                         <div class="mb-4">
-                            <label class="block text-sm font-semibold text-[var(--text)] mb-2">Kategori</label>
+                            <label class="block text-sm font-semibold text-(--text) mb-2">Kategori</label>
                             <select 
                                 name="category" 
-                                class="w-full px-3 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30"
+                                class="w-full px-3 py-2 border border-(--border-soft) rounded-xl focus:outline-none focus:border-(--primary) focus:ring-2 focus:ring-(--lavender)/30"
                             >
                                 <option value="">Semua Kategori</option>
                                 @foreach($categories as $category)
@@ -64,16 +64,16 @@
 
                     <!-- Category List -->
                     <div>
-                        <h4 class="font-semibold text-[var(--text)] mb-3">Kategori Populer</h4>
+                        <h4 class="font-semibold text-(--text) mb-3">Kategori Populer</h4>
                         <ul class="space-y-2">
                             @foreach($categories as $category)
                                 <li>
                                     <a 
                                         href="{{ route('programs.index', ['category' => $category->slug]) }}"
-                                        class="text-[var(--primary)] hover:text-[var(--primary-dark)] transition text-sm block py-1 px-2 rounded hover:bg-[var(--lavender)]/20"
+                                        class="text-(--primary) hover:text-(--primary-dark) transition text-sm block py-1 px-2 rounded hover:bg-(--lavender)/20"
                                     >
                                         {{ $category->name }}
-                                        <span class="text-[var(--text-muted)] text-xs">({{ $category->programs->count() }})</span>
+                                        <span class="text-(--text-muted) text-xs">({{ $category->programs->count() }})</span>
                                     </a>
                                 </li>
                             @endforeach
@@ -86,7 +86,7 @@
             <div class="lg:col-span-3">
                 @if($programs->count() > 0)
                     <div class="mb-6">
-                        <p class="text-[var(--text-muted)]">
+                        <p class="text-(--text-muted)">
                             Menampilkan {{ $programs->count() }} dari {{ $programs->total() }} program
                             @if(request('search'))
                                 untuk "<strong>{{ request('search') }}</strong>"
@@ -101,7 +101,7 @@
                         @foreach($programs as $program)
                             <div class="card hover:shadow-xl transition overflow-hidden">
                                 <!-- Image -->
-                                <div class="w-full h-40 bg-[var(--lavender)] flex items-center justify-center overflow-hidden relative">
+                                <div class="w-full h-40 bg-(--lavender) flex items-center justify-center overflow-hidden relative">
                                     <div class="image-fallback absolute inset-0 flex items-center justify-center text-white text-center px-4" style="display: none;">
                                         <i class="fas fa-image text-5xl opacity-50"></i>
                                     </div>
@@ -124,28 +124,28 @@
                                     </div>
 
                                     <!-- Title -->
-                                    <h3 class="text-lg font-bold text-[var(--text)] mb-2 line-clamp-2 hover:text-[var(--primary)]">
+                                    <h3 class="text-lg font-bold text-(--text) mb-2 line-clamp-2 hover:text-(--primary)">
                                         <a href="{{ route('programs.show', $program->slug) }}">
                                             {{ $program->title }}
                                         </a>
                                     </h3>
 
                                     <!-- Meta -->
-                                    <div class="space-y-1 text-xs text-[var(--text-muted)] mb-3">
+                                    <div class="space-y-1 text-xs text-(--text-muted) mb-3">
                                         <div>
-                                            <i class="fas fa-user text-[var(--primary)] mr-1"></i>{{ $program->author }}
+                                            <i class="fas fa-user text-(--primary) mr-1"></i>{{ $program->author }}
                                         </div>
                                         <div>
-                                            <i class="fas fa-calendar text-[var(--primary)] mr-1"></i>{{ $program->publish_date->format('d M Y') }}
+                                            <i class="fas fa-calendar text-(--primary) mr-1"></i>{{ $program->publish_date->format('d M Y') }}
                                         </div>
-                                        <div class="flex items-center text-xs text-[var(--text-muted)]">
-                                            <i class="fas fa-map-marker-alt text-[var(--primary)] mr-1 flex-shrink-0"></i>
+                                        <div class="flex items-center text-xs text-(--text-muted)">
+                                            <i class="fas fa-map-marker-alt text-(--primary) mr-1 flex-shrink-0"></i>
                                             <span class="truncate min-w-0 block">{{ $program->location }}</span>
                                         </div>
                                     </div>
 
                                     <!-- Description -->
-                                    <p class="text-[var(--text-muted)] text-sm mb-4 line-clamp-2">
+                                    <p class="text-(--text-muted) text-sm mb-4 line-clamp-2">
                                         {{ $program->description }}
                                     </p>
 
@@ -165,9 +165,9 @@
                 @else
                     <!-- Empty State -->
                     <div class="card p-12 text-center">
-                        <i class="fas fa-inbox text-6xl text-[var(--border-soft)] mb-4"></i>
-                        <h3 class="text-2xl font-bold text-[var(--text)] mb-2">Tidak Ada Program</h3>
-                        <p class="text-[var(--text-muted)] mb-6">
+                        <i class="fas fa-inbox text-6xl text-(--border-soft) mb-4"></i>
+                        <h3 class="text-2xl font-bold text-(--text) mb-2">Tidak Ada Program</h3>
+                        <p class="text-(--text-muted) mb-6">
                             Tidak ada program yang cocok dengan pencarian Anda.
                         </p>
                         <a href="{{ route('programs.index') }}" class="btn-primary inline-block">
