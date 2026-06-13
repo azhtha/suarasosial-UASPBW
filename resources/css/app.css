@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 @layer base {
     html, body {
@@ -10,28 +8,47 @@
 
 @layer components {
     .btn-primary {
-        @apply bg-primary text-white font-semibold px-4 py-2 rounded-lg inline-flex items-center justify-center;
+        @apply text-white font-semibold px-4 py-2 rounded-lg inline-flex items-center justify-center;
+        background-color: #7C3AED;
     }
-    .btn-primary:hover { @apply bg-primary-dark }
+    .btn-primary:hover {
+        background-color: #6D28D9;
+    }
 
     .btn-secondary {
-        @apply bg-transparent text-primary border border-primary font-semibold px-4 py-2 rounded-lg inline-flex items-center justify-center;
+        @apply bg-transparent font-semibold px-4 py-2 rounded-lg inline-flex items-center justify-center;
+        color: #7C3AED;
+        border: 1px solid #7C3AED;
     }
-    .btn-secondary:hover { @apply bg-primary/10 text-primary-dark }
+    .btn-secondary:hover {
+        background-color: rgba(124, 58, 237, 0.1);
+        color: #6D28D9;
+    }
 
     .btn-accent {
-        @apply bg-accent text-text font-semibold px-4 py-2 rounded-lg inline-flex items-center justify-center;
+        @apply text-[#2E1065] font-semibold px-4 py-2 rounded-lg inline-flex items-center justify-center;
+        background-color: #FBBF24;
     }
-    .btn-accent:hover { @apply bg-yellow-500 }
+    .btn-accent:hover {
+        background-color: #f59e0b;
+    }
 
     .btn-loading { @apply opacity-75 pointer-events-none }
 
-    .card { @apply bg-card border border-border-soft rounded-xl shadow-lg overflow-hidden }
+    .card {
+        @apply rounded-xl shadow-lg overflow-hidden;
+        background-color: #FFFFFF;
+        border: 1px solid #E9D5FF;
+    }
 
     .badge { @apply inline-block px-3 py-1 text-xs font-bold rounded-full }
-    .badge-primary { @apply bg-[#EDE9FE] text-primary }
+    .badge-primary { @apply text-[#7C3AED]; background-color: #EDE9FE; }
 
-    .input-soft { @apply border border-border-soft bg-white text-text px-4 py-2 rounded-xl w-full focus:outline-none }
+    .input-soft {
+        @apply bg-white px-4 py-2 rounded-xl w-full focus:outline-none;
+        border: 1px solid #E9D5FF;
+        color: #2E1065;
+    }
     .input-soft:focus { box-shadow: 0 0 0 12px rgba(167,139,250,0.12); }
 
     .skeleton { @apply relative overflow-hidden bg-gray-100 }
