@@ -15,7 +15,6 @@
                 <i class="fas fa-bullhorn text-[var(--primary)] text-4xl"></i>
             </div>
             <h1 class="text-4xl font-bold text-[var(--text)] mb-2">SuaraSosial</h1>
-            <p class="text-[var(--text-muted)]">Admin Panel</p>
         </div>
 
         <!-- Login Card -->
@@ -51,7 +50,7 @@
                         value="{{ old('email') }}"
                         required 
                         autofocus
-                        placeholder="admin@suarasosial.test"
+                        placeholder="Masukkan email"
                         class="w-full px-4 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30 @error('email') border-red-500 @enderror"
                     >
                 </div>
@@ -66,7 +65,7 @@
                         id="password"
                         name="password" 
                         required 
-                        placeholder="••••••••"
+                        placeholder="Masukkan password"
                         class="w-full px-4 py-2 border border-[var(--border-soft)] rounded-xl focus:outline-none focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--lavender)]/30 @error('password') border-red-500 @enderror"
                     >
                 </div>
@@ -111,11 +110,6 @@
                 </a>
             </div>
         </div>
-
-        <!-- Footer -->
-        <p class="text-center text-[var(--text-muted)] text-sm mt-8">
-            &copy; 2024 SuaraSosial. Semua hak dilindungi.
-        </p>
     </div>
 </body>
 </html>
