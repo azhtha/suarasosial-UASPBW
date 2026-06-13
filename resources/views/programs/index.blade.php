@@ -136,7 +136,7 @@
                                             <i class="fas fa-user text-(--primary) mr-1"></i>{{ $program->author }}
                                         </div>
                                         <div>
-                                            <i class="fas fa-calendar text-(--primary) mr-1"></i>{{ $program->publish_date->format('d M Y') }}
+                                            <i class="fas fa-calendar text-(--primary) mr-1"></i>{{ $program->formatted_publish_date }}
                                         </div>
                                         <div class="flex items-center text-xs text-(--text-muted)">
                                             <i class="fas fa-map-marker-alt text-(--primary) mr-1 flex-shrink-0"></i>

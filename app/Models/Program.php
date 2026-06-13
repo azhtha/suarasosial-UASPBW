@@ -35,6 +35,14 @@ class Program extends Model
     }
 
     /**
+     * Get the publication date in Indonesian format.
+     */
+    public function getFormattedPublishDateAttribute(): string
+    {
+        return $this->publish_date->locale('id')->translatedFormat('d F Y');
+    }
+
+    /**
      * Get the image URL.
      */
     public function getImageUrlAttribute()

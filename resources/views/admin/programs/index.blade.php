@@ -64,7 +64,7 @@
                                     {{ Str::limit($program->location, 20) }}
                                 </td>
                                 <td class="px-4 py-4 text-sm text-(--text-muted) whitespace-nowrap">
-                                    {{ $program->publish_date->format('d M Y') }}
+                                    {{ $program->formatted_publish_date }}
                                 </td>
                                 <td class="px-4 py-4 text-center">
                                     <div class="inline-flex items-center justify-center gap-2">

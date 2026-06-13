@@ -56,7 +56,7 @@
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-calendar text-(--primary)] mr-2"></i>
-                                <span>{{ $program->publish_date->format('d F Y') }}</span>
+                                <span>{{ $program->formatted_publish_date }}</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-map-marker-alt text-(--primary)] mr-2"></i>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="border-t border-(--border-soft)] pt-4">
                             <p class="text-sm text-(--text-muted)] font-semibold mb-1">Tanggal Publikasi</p>
-                            <p class="text-(--text)]">{{ $program->publish_date->format('d F Y') }}</p>
+                            <p class="text-(--text)]">{{ $program->formatted_publish_date }}</p>
                         </div>
                         <div class="border-t border-(--border-soft)] pt-4">
                             <p class="text-sm text-(--text-muted)] font-semibold mb-1">Lokasi</p>
@@ -127,7 +127,7 @@
                                         </a>
                                     </h4>
                                     <p class="text-xs text-(--text-muted)] mb-2">
-                                        <i class="fas fa-calendar mr-1"></i>{{ $related->publish_date->format('d M Y') }}
+                                        <i class="fas fa-calendar mr-1"></i>{{ $related->formatted_publish_date }}
                                     </p>
                                     <a href="{{ route('programs.show', $related->slug) }}" class="text-(--primary)] hover:text-(--primary-dark)] text-sm">
                                         <i class="fas fa-arrow-right mr-1"></i>Baca Selengkapnya

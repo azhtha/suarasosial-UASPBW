@@ -42,7 +42,7 @@
 
                 <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <p class="text-sm text-(--text-muted)">Diperbarui terakhir: {{ $admin->updated_at ? $admin->updated_at->format('d F Y H:i') : '-' }}</p>
+                        <p class="text-sm text-(--text-muted)">Diperbarui terakhir: {{ $admin->updated_at ? $admin->updated_at->locale('id')->translatedFormat('d F Y H:i') : '-' }}</p>
                     </div>
                     <button type="submit" class="btn-primary inline-flex items-center">
                         <i class="fas fa-save mr-2"></i>Simpan Perubahan
