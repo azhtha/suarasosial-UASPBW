@@ -68,7 +68,7 @@ class ProgramSeeder extends Seeder
                 'category_id' => $category->id,
                 'title' => $program['title'],
                 'slug' => Str::slug($program['title']),
-                'image' => null, // Will be set manually or through upload
+                'image' => null,
                 'description' => $program['description'],
                 'author' => $program['author'],
                 'publish_date' => $program['publish_date'],
