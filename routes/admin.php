@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/admin/login', [AuthController::class, 'login'])->name('login.store');
+Route::get('/admin/logout', function () {
+    return redirect()->route('home');
+});
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
