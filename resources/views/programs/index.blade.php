@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Header -->
-    <div class="bg-gradient-to-r from-purple-700 to-purple-400 text-white py-10">
+    <div class="bg-purple-700 text-white py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-4xl font-bold mb-2 text-white">
                 <i class="fas fa-list mr-3 text-white"></i>Daftar Program Sosialisasi
@@ -101,7 +101,7 @@
                         @foreach($programs as $program)
                             <div class="card hover:shadow-xl transition overflow-hidden">
                                 <!-- Image -->
-                                <div class="w-full h-40 bg-gradient-to-r from-[var(--lavender)] to-[var(--primary)] flex items-center justify-center overflow-hidden">
+                                <div class="w-full h-40 bg-[var(--lavender)] flex items-center justify-center overflow-hidden">
                                     @if($program->image)
                                         <img src="{{ $program->image_url }}" alt="{{ $program->title }}" class="w-full h-full object-cover">
                                     @else

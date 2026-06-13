@@ -259,9 +259,6 @@
                         <a href="{{ route('programs.index') }}" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Program</a>
                         @auth
                             <a href="{{ route('admin.dashboard') }}" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Admin</a>
-                            <a href="{{ route('home') }}" class="text-[var(--text-muted)] hover:text-[var(--primary)] transition">Beranda</a>
-                        @else
-                            <a href="{{ route('login') }}" class="btn-accent text-sm">Login Admin</a>
                         @endauth
                     </div>
                 </div>
@@ -328,7 +325,14 @@
                     </div>
                 </div>
                 <div class="border-t border-[var(--border-soft)] pt-8">
-                    <p class="text-center text-sm">&copy; 2024 SuaraSosial. Semua hak dilindungi.</p>
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        @guest
+                            <a href="{{ route('login') }}" class="btn-accent text-sm inline-flex items-center justify-center px-4 py-3 rounded-3xl">
+                                Login Admin
+                            </a>
+                        @endguest
+                        <p class="text-center text-sm md:text-right">&copy; 2024 SuaraSosial. Semua hak dilindungi.</p>
+                    </div>
                 </div>
             </div>
         </footer>

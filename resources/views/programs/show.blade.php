@@ -22,7 +22,7 @@
             <div class="lg:col-span-2">
                 <article class="card overflow-hidden">
                     <!-- Featured Image -->
-                    <div class="w-full h-96 bg-gradient-to-r from-[var(--lavender)] to-[var(--primary)] flex items-center justify-center overflow-hidden">
+                    <div class="w-full h-96 bg-[var(--lavender)] flex items-center justify-center overflow-hidden">
                         @if($program->image)
                             <img src="{{ $program->image_url }}" alt="{{ $program->title }}" class="w-full h-full object-cover">
                         @else

@@ -171,14 +171,22 @@
             </nav>
 
             <div class="mt-auto border-t border-white/20 p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-semibold">{{ Auth::user()->name }}</p>
-                        <p class="text-xs text-[rgba(255,255,255,0.85)]">{{ Auth::user()->email }}</p>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-semibold">{{ Auth::user()->name }}</p>
+                            <p class="text-xs text-[rgba(255,255,255,0.85)]">{{ Auth::user()->email }}</p>
+                        </div>
+                        <a href="{{ route('home') }}" class="text-[rgba(255,255,255,0.85)] hover:text-white" title="Kembali ke Beranda">
+                            <i class="fas fa-home"></i>
+                        </a>
                     </div>
-                    <a href="{{ route('home') }}" class="text-[rgba(255,255,255,0.85)] hover:text-white" title="Kembali ke Beranda">
-                        <i class="fas fa-home"></i>
-                    </a>
+                    <form action="{{ route('admin.logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 rounded-3xl bg-white/10 hover:bg-white/20 px-4 py-3 text-sm text-white transition">
+                            <i class="fas fa-sign-out-alt"></i>Logout ke Beranda
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
