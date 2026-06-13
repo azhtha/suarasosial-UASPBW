@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Program extends Model
@@ -38,14 +39,18 @@ class Program extends Model
      */
     public function getImageUrlAttribute()
     {
-        if ($this->image) {
-            // If path already starts with http(s) return as-is
-            if (Str::startsWith($this->image, ['http://', 'https://'])) {
-                return $this->image;
-            }
-            return asset($this->image);
+        if (! $this->image) {
+            return null;
         }
 
-        return asset('images/placeholder.jpg');
+        if (Str::startsWith($this->image, ['http://', 'https://'])) {
+            return $this->image;
+        }
+
+        if (Storage::disk('public')->exists($this->image)) {
+            return Storage::disk('public')->url($this->image);
+        }
+
+        return null;
     }
 }

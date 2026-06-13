@@ -132,9 +132,12 @@
                     </h3>
 
                     <div class="mb-4">
-                        @if($program->image)
-                            <div id="imagePreview" class="w-full h-40 bg-[var(--background)] rounded-xl mb-4 flex items-center justify-center overflow-hidden">
-                                <img id="previewImage" src="{{ $program->image_url }}" alt="Preview" class="w-full h-full object-cover">
+                        @if($program->image_url)
+                            <div id="imagePreview" class="w-full h-40 bg-[var(--background)] rounded-xl mb-4 flex items-center justify-center overflow-hidden relative">
+                                <div id="previewFallback" class="absolute inset-0 flex items-center justify-center text-[var(--text-muted)]" style="display: none;">
+                                    <i class="fas fa-image text-4xl"></i>
+                                </div>
+                                <img id="previewImage" src="{{ $program->image_url }}" alt="Preview" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('previewFallback').style.display='flex';">
                             </div>
                         @else
                             <div id="imagePreview" class="w-full h-40 bg-[var(--background)] rounded-xl mb-4 flex items-center justify-center overflow-hidden" style="display: none;">

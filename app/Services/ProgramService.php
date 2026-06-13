@@ -12,14 +12,9 @@ class ProgramService
     public function storeProgram(array $data, ?UploadedFile $image = null): Program
     {
         if ($image) {
-            $folder = public_path('programs');
-            if (!file_exists($folder)) {
-                mkdir($folder, 0755, true);
-            }
-
             $filename = time().'_'.Str::random(8).'.'.$image->getClientOriginalExtension();
-            $image->move($folder, $filename);
-            $data['image'] = 'programs/'.$filename;
+            $path = Storage::disk('public')->putFileAs('programs', $image, $filename);
+            $data['image'] = $path;
         }
 
         $data['slug'] = Str::slug($data['title']);
@@ -30,19 +25,13 @@ class ProgramService
     public function updateProgram(Program $program, array $data, ?UploadedFile $image = null): Program
     {
         if ($image) {
-            // delete old file if exists in public folder
-            if ($program->image && file_exists(public_path($program->image))) {
-                @unlink(public_path($program->image));
-            }
-
-            $folder = public_path('programs');
-            if (!file_exists($folder)) {
-                mkdir($folder, 0755, true);
+            if ($program->image && Storage::disk('public')->exists($program->image)) {
+                Storage::disk('public')->delete($program->image);
             }
 
             $filename = time().'_'.Str::random(8).'.'.$image->getClientOriginalExtension();
-            $image->move($folder, $filename);
-            $data['image'] = 'programs/'.$filename;
+            $path = Storage::disk('public')->putFileAs('programs', $image, $filename);
+            $data['image'] = $path;
         }
 
         $data['slug'] = Str::slug($data['title']);

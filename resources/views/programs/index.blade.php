@@ -101,11 +101,14 @@
                         @foreach($programs as $program)
                             <div class="card hover:shadow-xl transition overflow-hidden">
                                 <!-- Image -->
-                                <div class="w-full h-40 bg-[var(--lavender)] flex items-center justify-center overflow-hidden">
-                                    @if($program->image)
-                                        <img src="{{ $program->image_url }}" alt="{{ $program->title }}" class="w-full h-full object-cover">
+                                <div class="w-full h-40 bg-[var(--lavender)] flex items-center justify-center overflow-hidden relative">
+                                    <div class="image-fallback absolute inset-0 flex items-center justify-center text-white text-center px-4" style="display: none;">
+                                        <i class="fas fa-image text-5xl opacity-50"></i>
+                                    </div>
+                                    @if($program->image_url)
+                                        <img src="{{ $program->image_url }}" alt="{{ $program->title }}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.closest('.relative').querySelector('.image-fallback').style.display='flex';">
                                     @else
-                                        <div class="text-white text-center">
+                                        <div class="absolute inset-0 flex items-center justify-center text-white text-center px-4">
                                             <i class="fas fa-image text-5xl opacity-50"></i>
                                         </div>
                                     @endif
