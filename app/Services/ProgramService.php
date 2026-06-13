@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Program;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -13,7 +14,7 @@ class ProgramService
     {
         if ($image) {
             $filename = time().'_'.Str::random(8).'.'.$image->getClientOriginalExtension();
-            $path = Storage::disk('public')->putFileAs('programs', $image, $filename);
+            $path = $this->imageDisk()->putFileAs('programs', $image, $filename);
             $data['image'] = $path;
         }
 
@@ -25,12 +26,14 @@ class ProgramService
     public function updateProgram(Program $program, array $data, ?UploadedFile $image = null): Program
     {
         if ($image) {
-            if ($program->image && Storage::disk('public')->exists($program->image)) {
-                Storage::disk('public')->delete($program->image);
+            $disk = $this->imageDisk();
+            $filename = time().'_'.Str::random(8).'.'.$image->getClientOriginalExtension();
+            $path = $disk->putFileAs('programs', $image, $filename);
+
+            if ($program->image && $disk->exists($program->image)) {
+                $disk->delete($program->image);
             }
 
-            $filename = time().'_'.Str::random(8).'.'.$image->getClientOriginalExtension();
-            $path = Storage::disk('public')->putFileAs('programs', $image, $filename);
             $data['image'] = $path;
         }
 
@@ -39,5 +42,17 @@ class ProgramService
         $program->update($data);
 
         return $program;
+    }
+
+    public function deleteProgramImage(Program $program): void
+    {
+        if ($program->image && $this->imageDisk()->exists($program->image)) {
+            $this->imageDisk()->delete($program->image);
+        }
+    }
+
+    private function imageDisk(): FilesystemAdapter
+    {
+        return Storage::disk(config('filesystems.program_images'));
     }
 }

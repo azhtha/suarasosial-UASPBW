@@ -47,7 +47,14 @@ class Program extends Model
             return $this->image;
         }
 
-        if (Storage::disk('public')->exists($this->image)) {
+        $diskName = config('filesystems.program_images');
+        $disk = Storage::disk($diskName);
+
+        if ($diskName === 's3') {
+            return $disk->url($this->image);
+        }
+
+        if ($disk->exists($this->image)) {
             return route('program-images.show', [
                 'filename' => basename($this->image),
             ], false);

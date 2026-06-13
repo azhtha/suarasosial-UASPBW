@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProgramRequest;
-use App\Services\ProgramService;
 use App\Models\Category;
 use App\Models\Program;
+use App\Services\ProgramService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProgramController extends Controller
@@ -31,13 +30,14 @@ class ProgramController extends Controller
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where(function ($q) use ($search) {
-                $q->where('title', 'like', '%' . $search . '%')
-                    ->orWhere('author', 'like', '%' . $search . '%')
-                    ->orWhere('location', 'like', '%' . $search . '%');
+                $q->where('title', 'like', '%'.$search.'%')
+                    ->orWhere('author', 'like', '%'.$search.'%')
+                    ->orWhere('location', 'like', '%'.$search.'%');
             });
         }
 
         $programs = $query->orderBy('created_at', 'desc')->paginate(10);
+
         return view('admin.programs.index', compact('programs'));
     }
 
@@ -47,6 +47,7 @@ class ProgramController extends Controller
     public function create(): View
     {
         $categories = Category::all();
+
         return view('admin.programs.create', compact('categories'));
     }
 
@@ -70,6 +71,7 @@ class ProgramController extends Controller
     public function edit(Program $program): View
     {
         $categories = Category::all();
+
         return view('admin.programs.edit', compact('program', 'categories'));
     }
 
@@ -92,9 +94,7 @@ class ProgramController extends Controller
      */
     public function destroy(Program $program): RedirectResponse
     {
-        if ($program->image && \Storage::disk('public')->exists($program->image)) {
-            \Storage::disk('public')->delete($program->image);
-        }
+        $this->programService->deleteProgramImage($program);
 
         $program->delete();
 

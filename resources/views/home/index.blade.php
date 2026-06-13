@@ -11,7 +11,7 @@
             </h1>
             <p class="text-xl text-purple-50 mb-8">Platform Informasi Kegiatan Sosialisasi Mahasiswa</p>
             <p class="text-lg text-purple-50 mb-8 max-w-3xl mx-auto">
-                Kami menyediakan informasi lengkap tentang berbagai kegiatan sosialisasi dan edukasi masyarakat yang dilakukan oleh mahasiswa. Dari pendidikan, lingkungan, literasi digital, kesehatan, hingga kegiatan sosial masyarakat.
+                Menyediakan informasi lengkap tentang berbagai kegiatan sosialisasi dan edukasi masyarakat yang dilakukan oleh mahasiswa. Dari pendidikan, lingkungan, literasi digital, kesehatan, hingga kegiatan sosial masyarakat.
             </p>
             <a href="{{ route('programs.index') }}" class="btn-accent inline-block">
                 <i class="fas fa-arrow-right mr-2"></i>Lihat Semua Program
