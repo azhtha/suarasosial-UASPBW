@@ -24,12 +24,18 @@
             background: linear-gradient(180deg, #F8F5FF 0%, #FFFFFF 100%);
             color: var(--text);
         }
+        html, body {
+            height: 100%;
+        }
+
         .container {
-            min-height: 100vh;
+            position: fixed;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
+            box-sizing: border-box;
         }
         .card {
             width: 100%;
