@@ -268,37 +268,18 @@
 
     <!-- Main Content -->
     <main>
-        @if ($errors->any())
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-                <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-                    <strong>Terjadi kesalahan:</strong>
-                    <ul class="list-disc list-inside mt-2">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        @endif
-
-        @if (session('success'))
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-                <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded">
-                    {{ session('success') }}
-                </div>
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-                <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
-                    {{ session('error') }}
-                </div>
-            </div>
-        @endif
-
         @yield('content')
     </main>
+
+    <div id="toast-container" class="fixed inset-x-0 top-6 z-50 flex items-center justify-center px-4 pointer-events-none"></div>
+
+    <script>
+        window.toastMessages = {
+            success: @json(session('success')),
+            error: @json(session('error')),
+            validation: @json($errors->any() ? implode(' ', $errors->all()) : null)
+        };
+    </script>
 
     <!-- Footer -->
     @if(strpos(Route::currentRouteName(), 'admin') === false && Route::currentRouteName() !== 'login')
