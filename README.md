@@ -16,6 +16,9 @@ AWS_ENDPOINT=https://<project-ref>.storage.supabase.co/storage/v1/s3
 AWS_URL=https://<project-ref>.supabase.co/storage/v1/object/public/suarasosial-bucket
 ```
 
+`AWS_URL` may also contain only `https://<project-ref>.supabase.co`; the
+application will append the public object path and `AWS_BUCKET` automatically.
+
 Do not use the Supabase anon key or service-role JWT as S3 credentials. After
 changing Railway variables, redeploy the application so Laravel reloads its
 configuration. The application also upgrades the legacy
