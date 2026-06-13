@@ -48,7 +48,9 @@ class Program extends Model
         }
 
         if (Storage::disk('public')->exists($this->image)) {
-            return Storage::disk('public')->url($this->image);
+            return route('program-images.show', [
+                'filename' => basename($this->image),
+            ], false);
         }
 
         return null;
