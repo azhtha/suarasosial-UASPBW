@@ -87,7 +87,7 @@
                 <!-- Submit Button -->
                 <button 
                     type="submit" 
-                    class="w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white font-bold py-2 px-4 rounded-xl transition flex items-center justify-center"
+                    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center text-lg shadow-md hover:shadow-lg"
                 >
                     <i class="fas fa-sign-in-alt mr-2"></i>Login
                 </button>
