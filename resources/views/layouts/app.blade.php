@@ -78,6 +78,68 @@
             background-color: #f59e0b;
         }
 
+        .btn-loading {
+            pointer-events: none;
+            opacity: 0.75;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 1.125rem;
+            height: 1.125rem;
+            border: 3px solid rgba(255,255,255,0.55);
+            border-top-color: #fff;
+            border-radius: 9999px;
+            animation: spin 0.75s linear infinite;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .skeleton {
+            position: relative;
+            overflow: hidden;
+            background-color: #ededf5;
+        }
+
+        .skeleton::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.75), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            to { transform: translateX(100%); }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(3px);
+            display: none;
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .loading-overlay p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
         .card {
             background-color: var(--card);
             border: 1px solid var(--border-soft);
@@ -274,6 +336,36 @@
             </div>
         </footer>
     @endif
+
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="flex flex-col items-center gap-3 p-6 rounded-3xl bg-white/90 shadow-2xl">
+            <div class="spinner"></div>
+            <p>Memuat...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('form.js-loading-form').forEach(function (form) {
+                form.addEventListener('submit', function () {
+                    var submit = form.querySelector('[type="submit"]');
+                    if (submit) {
+                        submit.classList.add('btn-loading');
+                        submit.setAttribute('disabled', 'disabled');
+                        var spinner = submit.querySelector('.spinner');
+                        if (spinner) {
+                            spinner.classList.remove('hidden');
+                        }
+                    }
+
+                    var overlay = document.getElementById('loadingOverlay');
+                    if (overlay) {
+                        overlay.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 
     @yield('scripts')
 </body>

@@ -35,7 +35,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('login.store') }}" class="space-y-6">
+            <form method="POST" action="{{ route('login.store') }}" class="space-y-6 js-loading-form">
                 @csrf
 
                 <!-- Email -->
@@ -88,7 +88,9 @@
                     type="submit" 
                     class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center text-lg shadow-md hover:shadow-lg"
                 >
-                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    <span class="spinner hidden mr-2"></span>
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    <span>Login</span>
                 </button>
             </form>
 
