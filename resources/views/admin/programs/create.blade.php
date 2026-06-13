@@ -141,12 +141,18 @@
                         </div>
                     </div>
 
+                    <div class="flex items-center gap-2">
+                        <button type="button" id="chooseImageBtn" class="btn-primary w-full text-sm flex items-center justify-center">
+                            <i class="fas fa-upload mr-2"></i>
+                            <span id="chooseImageLabel">Pilih Gambar</span>
+                        </button>
+                    </div>
                     <input 
                         type="file" 
                         id="image"
                         name="image" 
                         accept="image/*"
-                        class="w-full text-sm"
+                        class="sr-only"
                     >
                     <p class="text-xs text-[var(--text-muted)] mt-2">
                         <i class="fas fa-info-circle text-[var(--primary)] mr-1"></i>Max 2MB. Format: JPG, PNG, GIF
@@ -195,21 +201,51 @@
     </form>
 
     <script>
-        document.getElementById('image').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const preview = document.getElementById('imagePreview');
-                    const previewImage = document.getElementById('previewImage');
-                    const placeholder = document.getElementById('noImagePlaceholder');
-                    
-                    previewImage.src = event.target.result;
-                    preview.style.display = 'block';
-                    placeholder.style.display = 'none';
-                };
-                reader.readAsDataURL(file);
+        (function(){
+            const fileInput = document.getElementById('image');
+            const chooseBtn = document.getElementById('chooseImageBtn');
+            const chooseLabel = document.getElementById('chooseImageLabel');
+            const preview = document.getElementById('imagePreview');
+            const previewImage = document.getElementById('previewImage');
+            const placeholder = document.getElementById('noImagePlaceholder');
+
+            // open file picker when custom button clicked
+            chooseBtn.addEventListener('click', () => fileInput.click());
+
+            function setButtonState(hasFile, name) {
+                if (!hasFile) {
+                    chooseBtn.classList.remove('btn-secondary');
+                    chooseBtn.classList.add('btn-primary');
+                    chooseLabel.textContent = 'Pilih Gambar';
+                    chooseBtn.setAttribute('aria-pressed', 'false');
+                } else {
+                    chooseBtn.classList.remove('btn-primary');
+                    chooseBtn.classList.add('btn-secondary');
+                    chooseLabel.textContent = name || 'File dipilih';
+                    chooseBtn.setAttribute('aria-pressed', 'true');
+                }
             }
-        });
+
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        previewImage.src = event.target.result;
+                        preview.style.display = 'block';
+                        placeholder.style.display = 'none';
+                    };
+                    reader.readAsDataURL(file);
+                    setButtonState(true, file.name);
+                } else {
+                    preview.style.display = 'none';
+                    placeholder.style.display = 'flex';
+                    setButtonState(false);
+                }
+            });
+
+            // initialize state (no file selected)
+            setButtonState(false);
+        })();
     </script>
 @endsection
