@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AccountUpdateRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
@@ -24,15 +24,10 @@ class AccountController extends Controller
     /**
      * Update the admin account.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(AccountUpdateRequest $request): RedirectResponse
     {
         $admin = Auth::user();
-
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . $admin->id,
-            'password' => 'nullable|string|min:8|confirmed',
-        ]);
+        $validated = $request->validated();
 
         $admin->name = $validated['name'];
         $admin->email = $validated['email'];

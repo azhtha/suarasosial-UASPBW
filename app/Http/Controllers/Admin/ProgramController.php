@@ -3,15 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProgramRequest;
+use App\Services\ProgramService;
 use App\Models\Category;
 use App\Models\Program;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class ProgramController extends Controller
 {
+    protected ProgramService $programService;
+
+    public function __construct(ProgramService $programService)
+    {
+        $this->programService = $programService;
+    }
+
     /**
      * Display a listing of programs.
      */
@@ -44,27 +52,12 @@ class ProgramController extends Controller
     /**
      * Store a newly created program in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(ProgramRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'author' => 'required|string|max:255',
-            'publish_date' => 'required|date',
-            'location' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        $data = $request->validated();
+        $image = $request->file('image');
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $path = $image->store('programs', 'public');
-            $validated['image'] = $path;
-        }
-
-        $validated['slug'] = Str::slug($validated['title']);
-
-        Program::create($validated);
+        $this->programService->storeProgram($data, $image);
 
         return redirect()->route('admin.programs.index')
             ->with('success', 'Program berhasil ditambahkan.');
@@ -82,32 +75,12 @@ class ProgramController extends Controller
     /**
      * Update the specified program in storage.
      */
-    public function update(Request $request, Program $program): RedirectResponse
+    public function update(ProgramRequest $request, Program $program): RedirectResponse
     {
-        $validated = $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'author' => 'required|string|max:255',
-            'publish_date' => 'required|date',
-            'location' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        $data = $request->validated();
+        $image = $request->file('image');
 
-        if ($request->hasFile('image')) {
-            // Delete old image if exists
-            if ($program->image && \Storage::disk('public')->exists($program->image)) {
-                \Storage::disk('public')->delete($program->image);
-            }
-
-            $image = $request->file('image');
-            $path = $image->store('programs', 'public');
-            $validated['image'] = $path;
-        }
-
-        $validated['slug'] = Str::slug($validated['title']);
-
-        $program->update($validated);
+        $this->programService->updateProgram($program, $data, $image);
 
         return redirect()->route('admin.programs.index')
             ->with('success', 'Program berhasil diperbarui.');

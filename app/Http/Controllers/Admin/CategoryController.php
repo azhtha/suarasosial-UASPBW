@@ -3,14 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryRequest;
+use App\Services\CategoryService;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
+    protected CategoryService $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     /**
      * Display a listing of categories.
      */
@@ -31,15 +38,9 @@ class CategoryController extends Controller
     /**
      * Store a newly created category in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(CategoryRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name',
-        ]);
-
-        $validated['slug'] = Str::slug($validated['name']);
-
-        Category::create($validated);
+        $this->categoryService->storeCategory($request->validated());
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'Kategori berhasil ditambahkan.');
@@ -56,15 +57,9 @@ class CategoryController extends Controller
     /**
      * Update the specified category in storage.
      */
-    public function update(Request $request, Category $category): RedirectResponse
+    public function update(CategoryRequest $request, Category $category): RedirectResponse
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
-        ]);
-
-        $validated['slug'] = Str::slug($validated['name']);
-
-        $category->update($validated);
+        $this->categoryService->updateCategory($category, $request->validated());
 
         return redirect()->route('admin.categories.index')
             ->with('success', 'Kategori berhasil diperbarui.');
