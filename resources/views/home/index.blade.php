@@ -23,12 +23,12 @@
     <div class="bg-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-                <div class="p-6 bg-[#FBBF24]-700 rounded-lg">
-                    <div class="text-4xl font-bold text-white mb-2">{{ $totalPrograms }}</div>
+                <div class="p-6 bg-[#ffd977] rounded-lg">
+                    <div class="text-4xl font-bold text-purple-700 mb-2">{{ $totalPrograms }}</div>
                     <div class="text-purple-700">Program Sosialisasi</div>
                 </div>
-                <div class="p-6 bg-[#FBBF24]-700 rounded-lg">
-                    <div class="text-4xl font-bold text-white mb-2">{{ count($categories) }}</div>
+                <div class="p-6 bg-[#ffd977] rounded-lg">
+                    <div class="text-4xl font-bold text-purple-700 mb-2">{{ count($categories) }}</div>
                     <div class="text-purple-700">Kategori Kegiatan</div>
                 </div>
             </div>
