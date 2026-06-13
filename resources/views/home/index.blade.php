@@ -23,11 +23,11 @@
     <div class="bg-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-                <div class="p-6 bg-primary rounded-lg">
+                <div class="p-6 bg-purple-700 rounded-lg">
                     <div class="text-4xl font-bold text-white mb-2">{{ $totalPrograms }}</div>
                     <div class="text-gray-300">Program Sosialisasi</div>
                 </div>
-                <div class="p-6 bg-accent/20 rounded-lg">
+                <div class="p-6 bg-purple-700 rounded-lg">
                     <div class="text-4xl font-bold text-gray-800 mb-2">{{ count($categories) }}</div>
                     <div class="text-gray-600">Kategori Kegiatan</div>
                 </div>
@@ -38,7 +38,7 @@
     <!-- Latest Programs -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 class="text-4xl font-bold text-(--text)] mb-4">Program Terbaru</h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse($latestPrograms as $program)
                 <div class="card hover:shadow-xl transition overflow-hidden">
