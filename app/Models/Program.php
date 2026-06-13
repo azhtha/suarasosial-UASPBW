@@ -38,6 +38,14 @@ class Program extends Model
      */
     public function getImageUrlAttribute()
     {
-        return $this->image ? Storage::disk('public')->url($this->image) : asset('images/placeholder.jpg');
+        if ($this->image) {
+            // If path already starts with http(s) return as-is
+            if (Str::startsWith($this->image, ['http://', 'https://'])) {
+                return $this->image;
+            }
+            return asset($this->image);
+        }
+
+        return asset('images/placeholder.jpg');
     }
 }
